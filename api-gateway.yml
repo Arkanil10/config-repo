@@ -1,0 +1,81 @@
+server:
+  port: 8088
+
+
+eureka:
+  client:
+    service-url.defaultZone: http://localhost:8761/eureka
+
+
+spring:
+  application:
+    name: Api-Gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders: "*"
+      routes:
+        - id: authentication-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/authentication-service/**
+          filters:
+            - RewritePath=/authentication-service(?<segment>/?.*), $\{segment}
+
+        - id: user-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - RewritePath=/user-service(?<segment>/?.*), $\{segment}
+
+        - id: shop-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/shop-service/**
+          filters:
+            - RewritePath=/shop-service(?<segment>/?.*), $\{segment}
+
+        - id: email-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/email-service/**
+          filters:
+            - RewritePath=/email-service(?<segment>/?.*), $\{segment}
+
+        - id: payment-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/payment-service/**
+          filters:
+            - RewritePath=/payment-service(?<segment>/?.*), $\{segment}
+
+        - id: order-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - RewritePath=/order-service(?<segment>/?.*), $\{segment}
+
+        - id: medicine-service
+          uri: http://localhost:9192
+          predicates:
+            - Path=/medicine-service/**
+          filters:
+            - RewritePath=/medicine-service(?<segment>/?.*), $\{segment}
+
+
+
+
+
+
+
+
+
+
+
