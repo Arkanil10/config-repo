@@ -69,13 +69,3 @@ spring:
           filters:
             - RewritePath=/medicine-service(?<segment>/?.*), $\{segment}
 
-
-
-
-
-
-
-
-
-
-
