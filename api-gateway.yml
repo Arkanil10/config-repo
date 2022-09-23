@@ -9,7 +9,7 @@ eureka:
 
 spring:
   application:
-    name: Api-Gateway
+    name: api-gateway
   cloud:
     gateway:
       globalcors:
