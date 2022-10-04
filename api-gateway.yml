@@ -71,10 +71,11 @@ spring:
             - Path=/medicine-service/**
           filters:
             - RewritePath=/medicine-service(?<segment>/?.*), $\{segment}
-        # - id: product-webapp
-        #   uri: http://localhost:4200
-        #   predicates:
-        #     - Path=/**
-        #   filters:
-        #     - RewritePath=(?<segment>/?.*), $\{segment}
+            
+        - id: product-webapp
+          uri: http://localhost:4200
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=(?<segment>/?.*), $\{segment}
 
